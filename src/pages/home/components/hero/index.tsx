@@ -1,8 +1,8 @@
 import './style.sass'
-import img1 from '../../../../../public/imgs/corgi1.jpg';
-import img2 from '../../../../../public/imgs/corgi2.jpg';
-import img3 from '../../../../../public/imgs/corgiCarente.jpg';
-import img4 from '../../../../../public/imgs/corgiVesgo.jpg';
+import img1 from '@images/corgi1.jpg';
+import img2 from '@images/corgi2.jpg';
+import img3 from '@images/corgiCarente.jpg';
+import img4 from '@images/corgiVesgo.jpg';
 
 function Hero() {
   return (

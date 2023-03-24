@@ -1,5 +1,5 @@
 import "./style.sass";
-import logo from '../../../../../public/imgs/logo.png';
+import logo from '@images/logo.png';
 
 function Header() {
   return (
