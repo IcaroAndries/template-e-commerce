@@ -1,8 +1,9 @@
-import { Hero } from "./components"
+import { Header, Hero } from "./components"
 
 function Home() {
   return (
     <>
+        <Header />
         <Hero />
     </>
   )
