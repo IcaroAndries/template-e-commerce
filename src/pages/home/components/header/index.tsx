@@ -1,5 +1,6 @@
 import "./style.sass";
-import logo from '~images/logo.png';
+import logo from '~images/logo.jpg';
+import { HiOutlineShoppingCart } from 'react-icons/hi';
 
 function Header() {
   return (
@@ -8,7 +9,7 @@ function Header() {
         <div className="header-menu">
           <a href="www.google.com" className="menu-header-item">Categorias</a>
           <a href="www.google.com" className="menu-header-item">Produtos</a>
-          <a href="www.google.com" className="menu-header-item">Carrinho</a>
+          <a href="www.google.com" className="menu-header-item"><HiOutlineShoppingCart/></a>
         </div>
     </header>
   )
