@@ -1,6 +1,7 @@
 import "./style.sass";
 import logo from '~images/logo.jpg';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
+import Button from "@mui/material/Button";
 
 function Header() {
   return (
