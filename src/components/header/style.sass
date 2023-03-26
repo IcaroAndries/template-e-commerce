@@ -1,42 +1,42 @@
 .header-container
       display: flex
       justify-content: space-between
+      position: fixed
+      z-index: 1
       padding-left: 10em
       padding-right: 10em
+      padding-top: 1
       align-items: center
       background-color: #fff
       width: 100%
       height: auto
-      border-bottom: 2px solid #f5f5f5
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+      .company-logo
+            
+            transition: all 0.5s ease-in-out
+            max-width: 4.6875em
+            max-height: 4.6875em
+            img
+                  max-width: 8em
+      .header-menu
+            .inner-menu
+                  display: flex
+            .menu-header-item           
+                  margin-right: 2em
+                  font-size: 1.5em 
+                  font-weight: bold
+                  transition: background-color 0.5s
+                  .tab-menu
+                        &:link
+                              text-decoration: none
+                              color: #000
+                        &:hover
+                              text-decoration: underline
+                              opacity: 0.7
+            button
+                  border: none
+                  text-decoration: none
+                  background-color: transparent
 
-.company-logo
-      max-width: 75px
-      max-height: 75px
-      img 
-            width: 75px
-            height: 75px
-
-.header-menu
-      .inner-menu
-            display: flex
-      .menu-header-item           
-            padding-right: 2em
-            font-size: 1.5em 
-            font-weight: bold
-            transition: background-color 0.5s
-            .tab-menu
-                  &:link
-                        text-decoration: none
-                        color: #000
-                  &:hover
-                        text-decoration: underline
-                        opacity: 0.7
-      button
-            border: none
-            text-decoration: none
-            background-color: transparent
-
-@media(width < 750px ) 
-      .header-container 
+@media (max-width:750px)
+      .header-container
             background: red

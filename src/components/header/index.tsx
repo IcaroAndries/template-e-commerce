@@ -6,16 +6,39 @@ import { Tooltip, Tabs, Tab } from "@mui/material";
 
 function Header() {
   const [value, setValue] = useState("one");
+  const [showNav, setShowNav] = useState(false);
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
-  
+
+  const handleScroll = () => {
+    let scrollPosition = window.scrollY;
+    if (scrollPosition > 39) {
+      setShowNav(true);
+    } else {
+      setShowNav(false);
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
   return (
-    <header className="header-container">
-        <a className="company-logo" href="www.google.com">
-          <img src={logo} alt="logo" />
-        </a>
+    <header
+      className="header-container"
+      style={
+        showNav
+          ? {
+              borderBottom: "2px solid #f5f5f5",
+              boxShadow:
+                "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+            }
+          : {}
+      }
+    >
+      <a className="company-logo" href="www.google.com">
+        <img style={showNav ? {maxWidth: "100%"} : {}} src={logo} alt="logo" />
+      </a>
       <div className="header-menu">
         <div className="inner-menu">
           <Tabs
@@ -26,10 +49,11 @@ function Header() {
             indicatorColor="primary"
             aria-label="secondary tabs example"
           >
-            <Tab className="tab-menu" value="one" label="Categorias" />
-            <Tab className="tab-menu" value="two" label="Produtos" />
+            <Tab className="tab-menu" value="categories" label="Categorias" />
+            <Tab className="tab-menu" value="support" label="Suporte" />
+            <Tab className="tab-menu" value="about" label="Sobre" />
+            <Tab className="tab-menu" value="contact" label="Contato" />
           </Tabs>
-          
           <Tooltip title="Carrinho">
             <button className="menu-header-item">
               <HiOutlineShoppingCart />
