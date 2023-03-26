@@ -20,23 +20,23 @@ function Header() {
       </div>
       <div className="header-menu">
         <div className="inner-menu">
-        <Tabs
-          className="menu-header-item"
-          value={value}
-          onChange={handleChange}
-          textColor="inherit"
-          indicatorColor="primary"
-          aria-label="secondary tabs example"
-        >
-          <Tab className="tab-menu" value="one" label="Categorias" />
-          <Tab className="tab-menu" value="two" label="Produtos" />
-        </Tabs>
-        
-        <Tooltip title="Carrinho">
-          <button className="menu-header-item">
-            <HiOutlineShoppingCart />
-          </button>
-        </Tooltip>
+          <Tabs
+            className="menu-header-item"
+            value={value}
+            onChange={handleChange}
+            textColor="inherit"
+            indicatorColor="primary"
+            aria-label="secondary tabs example"
+          >
+            <Tab className="tab-menu" value="one" label="Categorias" />
+            <Tab className="tab-menu" value="two" label="Produtos" />
+          </Tabs>
+          
+          <Tooltip title="Carrinho">
+            <button className="menu-header-item">
+              <HiOutlineShoppingCart />
+            </button>
+          </Tooltip>
         </div>
       </div>
     </header>
