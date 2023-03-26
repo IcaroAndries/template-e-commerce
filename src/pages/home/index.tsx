@@ -1,11 +1,11 @@
-import { Header, Hero } from "./components"
+import { Hero } from "./components"
+import './style.sass'
 
 function Home() {
   return (
-    <>
-        <Header />
+    <div className="home-container">
         <Hero />
-    </>
+    </div>
   )
 }
 
