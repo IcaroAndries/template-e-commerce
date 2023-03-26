@@ -3,7 +3,7 @@ import { Header, Hero } from "./components"
 function Home() {
   return (
     <>
-        <Header />
+        {/* <Header /> */}
         <Hero />
     </>
   )

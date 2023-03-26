@@ -1,3 +1,5 @@
+@use '../../../../config/variables'
+
 .main-container
     display: grid
     grid-template-areas: 'image-1 image-2 image-3' 'image-1 image-2 image-4'
@@ -7,15 +9,33 @@
     background-color: #fff
 
 .feature
+    position: relative
+
     img
+        position: absolute
         object-fit: cover
-        width: 80%
         height: 100%
+        width: 100%
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-        margin-top: 15em
         transition: opacity 0.5s
         &:hover
             opacity: 0.7
+    p
+        display: flex
+        align-items: center
+        justify-content: start
+        padding: 5px 10px 10px 10px
+        font-size: 30px
+        font-family: variables.$fontFamilyP
+        color: #fff
+        position: absolute
+        width: auto
+        height: auto
+        bottom: 8px
+        left: 16px
+        background-color: rgba( 16, 16, 16, 75%)
+        
+
 
 .image-1
     grid-area: image-1
