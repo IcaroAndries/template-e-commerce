@@ -13,11 +13,9 @@ function Header() {
   
   return (
     <header className="header-container">
-      <div className="company-logo">
-        <a href="www.google.com">
+        <a className="company-logo" href="www.google.com">
           <img src={logo} alt="logo" />
         </a>
-      </div>
       <div className="header-menu">
         <div className="inner-menu">
           <Tabs
