@@ -1,15 +1,45 @@
 import { useState } from "react";
 import "./style.sass";
 import logo from "~images/logo.jpg";
-import { HiOutlineShoppingCart } from "react-icons/hi";
-import { Tooltip, Tabs, Tab } from "@mui/material";
+import {
+  HiOutlineShoppingCart,
+  HiOutlineHome,
+  HiOutlineInformationCircle,
+  HiOutlineTrash,
+} from "react-icons/hi";
+import { BiSupport, BiBox } from "react-icons/bi";
+import { AiOutlinePhone } from "react-icons/ai";
+import {
+  Tooltip,
+  Tabs,
+  Tab,
+  Popover,
+  Typography,
+  Button,
+  ButtonGroup,
+} from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 function Header() {
-  const [value, setValue] = useState(window.location.pathname);
+  const [nav, setNav] = useState(window.location.pathname);
   const [showNav, setShowNav] = useState(false);
+  const [cart, setCart] = useState<HTMLButtonElement | null>(null);
+  const [count, setCount] = useState(1);
+
+  const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setCart(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setCart(null);
+  };
+
+  const open = Boolean(cart);
+  const id = open ? "simple-popover" : undefined;
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
+    setNav(newValue);
   };
 
   const handleScroll = () => {
@@ -18,6 +48,67 @@ function Header() {
       setShowNav(true);
     } else {
       setShowNav(false);
+    }
+  };
+
+  const handleRemoveProduct = () => {
+    setCount(0);
+  }
+
+  const renderCartModal = () => {
+    if (count >= 1) {
+      return (
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={cart}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}  
+        >
+          <Typography sx={{ p: 2 }}>
+            Computador {count}
+            <ButtonGroup color="warning" size="small" style={{ paddingLeft: "20px" }}>
+              <Button
+                aria-label="reduce"
+                onClick={() => {
+                  setCount(Math.max(count - 1, 1));
+                }}
+              >
+                <RemoveIcon fontSize="small" />
+              </Button>
+              <Button
+                aria-label="increase"
+                onClick={() => {
+                  setCount(count + 1);
+                }}
+              >
+                <AddIcon fontSize="small" />
+              </Button>
+            </ButtonGroup>
+            <button>
+              <HiOutlineTrash onClick={handleRemoveProduct}/>
+            </button>
+          </Typography>
+        </Popover>
+      );
+    } else {
+      return (
+        <Popover
+          id={id}
+          open={open}
+          anchorEl={cart}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+        >
+          <Typography sx={{ p: 2 }}>Não há itens nesse carrinho.</Typography>
+        </Popover>
+      );
     }
   };
 
@@ -37,29 +128,65 @@ function Header() {
       }
     >
       <a className="company-logo" href="/">
-        <img style={showNav ? {maxWidth: "100%"} : {}} src={logo} alt="logo" />
+        <img
+          style={showNav ? { maxWidth: "100%" } : {}}
+          src={logo}
+          alt="logo"
+        />
       </a>
       <div className="header-menu">
         <div className="inner-menu">
           <Tabs
             className="menu-header-item"
-            value={value}
+            value={nav}
             onChange={handleChange}
             textColor="inherit"
             indicatorColor="primary"
             aria-label="secondary tabs example"
           >
-            <Tab className="tab-menu" value="/" href="/" label="Home"/>
-            <Tab className="tab-menu" value="/products" href="/products" label="Produtos" />
-            <Tab className="tab-menu" value="/support" href="/support" label="Suporte" />
-            <Tab className="tab-menu" value="/about" href="/about" label="Sobre" />
-            <Tab className="tab-menu" value="/contact" href="/contact" label="Contato" />
+            <Tab
+              icon={<HiOutlineHome />}
+              className="tab-menu"
+              value="/"
+              href="/"
+              label="Home"
+            />
+            <Tab
+              icon={<BiBox />}
+              className="tab-menu"
+              value="/products"
+              href="/products"
+              label="Produtos"
+            />
+            <Tab
+              icon={<BiSupport />}
+              className="tab-menu"
+              value="/support"
+              href="/support"
+              label="Suporte"
+            />
+            <Tab
+              icon={<HiOutlineInformationCircle />}
+              className="tab-menu"
+              value="/about"
+              href="/about"
+              label="Sobre"
+            />
+            <Tab
+              icon={<AiOutlinePhone />}
+              className="tab-menu"
+              value="/contact"
+              href="/contact"
+              label="Contato"
+            />
           </Tabs>
+
           <Tooltip title="Carrinho">
-            <button className="menu-header-item">
+            <button className="menu-header-item" onClick={handleOpen}>
               <HiOutlineShoppingCart />
             </button>
           </Tooltip>
+          {renderCartModal()}
         </div>
       </div>
     </header>
