@@ -5,7 +5,7 @@ import { HiOutlineShoppingCart } from "react-icons/hi";
 import { Tooltip, Tabs, Tab } from "@mui/material";
 
 function Header() {
-  const [value, setValue] = useState("home");
+  const [value, setValue] = useState(window.location.pathname);
   const [showNav, setShowNav] = useState(false);
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -49,11 +49,11 @@ function Header() {
             indicatorColor="primary"
             aria-label="secondary tabs example"
           >
-            <Tab className="tab-menu" value="home" href="/" label="Home"/>
-            <Tab className="tab-menu" value="products" href="/products" label="Produtos" />
-            <Tab className="tab-menu" value="support" label="Suporte" />
-            <Tab className="tab-menu" value="about" label="Sobre" />
-            <Tab className="tab-menu" value="contact" label="Contato" />
+            <Tab className="tab-menu" value="/" href="/" label="Home"/>
+            <Tab className="tab-menu" value="/products" href="/products" label="Produtos" />
+            <Tab className="tab-menu" value="/support" label="Suporte" />
+            <Tab className="tab-menu" value="/about" label="Sobre" />
+            <Tab className="tab-menu" value="/contact" label="Contato" />
           </Tabs>
           <Tooltip title="Carrinho">
             <button className="menu-header-item">
