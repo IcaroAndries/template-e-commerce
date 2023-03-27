@@ -36,7 +36,7 @@ function Header() {
           : {}
       }
     >
-      <a className="company-logo" href="www.google.com">
+      <a className="company-logo" href="/">
         <img style={showNav ? {maxWidth: "100%"} : {}} src={logo} alt="logo" />
       </a>
       <div className="header-menu">
@@ -51,9 +51,9 @@ function Header() {
           >
             <Tab className="tab-menu" value="/" href="/" label="Home"/>
             <Tab className="tab-menu" value="/products" href="/products" label="Produtos" />
-            <Tab className="tab-menu" value="/support" label="Suporte" />
-            <Tab className="tab-menu" value="/about" label="Sobre" />
-            <Tab className="tab-menu" value="/contact" label="Contato" />
+            <Tab className="tab-menu" value="/support" href="/support" label="Suporte" />
+            <Tab className="tab-menu" value="/about" href="/about" label="Sobre" />
+            <Tab className="tab-menu" value="/contact" href="/contact" label="Contato" />
           </Tabs>
           <Tooltip title="Carrinho">
             <button className="menu-header-item">
