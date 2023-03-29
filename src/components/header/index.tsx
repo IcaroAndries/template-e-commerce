@@ -17,6 +17,7 @@ import {
   Typography,
   Button,
   ButtonGroup,
+  TextField,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -29,6 +30,7 @@ function Header() {
 
   const handleOpen = (event: React.MouseEvent<HTMLButtonElement>) => {
     setCart(event.currentTarget);
+    setCount(1);
   };
 
   const handleClose = () => {
@@ -53,7 +55,7 @@ function Header() {
 
   const handleRemoveProduct = () => {
     setCount(0);
-  }
+  };
 
   const renderCartModal = () => {
     if (count >= 1) {
@@ -66,11 +68,47 @@ function Header() {
           anchorOrigin={{
             vertical: "bottom",
             horizontal: "left",
-          }}  
+          }}
+          PaperProps={{
+            style: { width: "25%", display: "flex", paddingLeft: "2em" },
+          }}
         >
-          <Typography sx={{ p: 2 }}>
-            Computador {count}
-            <ButtonGroup color="warning" size="small" style={{ paddingLeft: "20px" }}>
+          <img src={logo} style={{ width: "15%" }}></img>
+          <Typography sx={{ p: 2  }}>
+            Computador
+            <TextField
+              id="standard-number"
+              label="Qtd"
+              sx={{
+                width: "2em",
+                marginLeft: "1em",
+                "& label.Mui-focused": {
+                  color: "red",
+                },
+                "& .MuiInput-underline:after": {
+                  borderBottomColor: "red",
+                },
+                "& .MuiFilledInput-underline:after": {
+                  borderBottomColor: "red",
+                },
+                "& .MuiOutlinedInput-root": {
+                  "&.Mui-focused fieldset": {
+                    borderColor: "red",
+                  },
+                },
+              }}
+              type="number"
+              value={count}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="standard"
+            />
+            <ButtonGroup
+              color="warning"
+              size="small"
+              sx={{ paddingLeft: "2em", paddingTop: "0.5em" }}
+            >
               <Button
                 aria-label="reduce"
                 onClick={() => {
@@ -88,8 +126,8 @@ function Header() {
                 <AddIcon fontSize="small" />
               </Button>
             </ButtonGroup>
-            <button>
-              <HiOutlineTrash onClick={handleRemoveProduct}/>
+            <button style={{ marginLeft: "2em" }}>
+              <HiOutlineTrash size="20px" onClick={handleRemoveProduct} />
             </button>
           </Typography>
         </Popover>
@@ -106,7 +144,7 @@ function Header() {
             horizontal: "left",
           }}
         >
-          <Typography sx={{ p: 2 }}>Não há itens nesse carrinho.</Typography>
+          <Typography sx={{ p: 2 }}>Não há itens no carrinho.</Typography>
         </Popover>
       );
     }
