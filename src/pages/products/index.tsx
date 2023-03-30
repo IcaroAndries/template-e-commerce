@@ -1,6 +1,9 @@
+import { ProductsCard } from "./components"
+import './style.sass'
+
 function Products() {
   return (
-    <div>Produtos na home page</div>
+    <div className="products-container"><ProductsCard/></div>
   )
 }
 

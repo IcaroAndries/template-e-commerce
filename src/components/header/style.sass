@@ -1,3 +1,6 @@
+@use '~config/variables' 
+$primary: variables.$primary
+
 .header-container
       display: flex
       justify-content: space-between
@@ -7,7 +10,7 @@
       padding-right: 10em
       padding-top: 1
       align-items: center
-      background-color: #fff
+      background-color: #fafafa
       width: 100%
       height: auto
       .company-logo
@@ -41,4 +44,19 @@ button
 
 @media (max-width:750px)
       .header-container
-            background: red
+            background: $primary
+                  
+.MuiFormControl-root
+      & label.Mui-focused
+            color: $primary
+      & .MuiInput-underline:after
+            border-bottom-color: $primary
+      & .MuiFilledInput-underline:after
+            border-bottom-color: $primary
+      & .MuiOutlinedInput-root
+            &.Mui-focused fieldset
+                  border-color: $primary
+
+.MuiTabs-root
+      & .MuiTabs-indicator
+            background-color: $primary

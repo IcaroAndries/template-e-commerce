@@ -73,7 +73,7 @@ function Header() {
             style: { width: "25%", display: "flex", paddingLeft: "2em" },
           }}
         >
-          <img src={logo} style={{ width: "15%" }}></img>
+          <img src={logo} style={{ width: "25%" }}></img>
           <Typography sx={{ p: 2  }}>
             Computador
             <TextField
@@ -82,20 +82,6 @@ function Header() {
               sx={{
                 width: "2em",
                 marginLeft: "1em",
-                "& label.Mui-focused": {
-                  color: "red",
-                },
-                "& .MuiInput-underline:after": {
-                  borderBottomColor: "red",
-                },
-                "& .MuiFilledInput-underline:after": {
-                  borderBottomColor: "red",
-                },
-                "& .MuiOutlinedInput-root": {
-                  "&.Mui-focused fieldset": {
-                    borderColor: "red",
-                  },
-                },
               }}
               type="number"
               value={count}
@@ -105,7 +91,6 @@ function Header() {
               variant="standard"
             />
             <ButtonGroup
-              color="warning"
               size="small"
               sx={{ paddingLeft: "2em", paddingTop: "0.5em" }}
             >
